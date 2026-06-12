@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const stats = [
   { value: "100M+", label: "Annual Visitors" },
   { value: "1,200+", label: "Retail & Dining Brands" },
@@ -8,7 +12,13 @@ const stats = [
 export default function Stats() {
   return (
     <section className="bg-black px-6 py-24">
-      <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-4">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="mx-auto grid max-w-6xl gap-6 md:grid-cols-4"
+      >
         {stats.map((item) => (
           <div
             key={item.label}
@@ -22,7 +32,7 @@ export default function Stats() {
             </p>
           </div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
